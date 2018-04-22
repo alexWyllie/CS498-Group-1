@@ -1,4 +1,4 @@
-package io.jenkins.plugins.sample;
+/*package io.jenkins.plugins.sample;
 
 import hudson.model.FreeStyleBuild;
 import hudson.model.FreeStyleProject;
@@ -75,4 +75,4 @@ public class HelloWorldBuilderTest {
         jenkins.assertLogContains(expectedString, completedBuild);
     }
 
-}
+}*/
