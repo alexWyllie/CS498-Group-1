@@ -55,6 +55,10 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 		//Also look up AbstractTestResultAction
 		AggregatedTestResultAction currentTestResults = run.getAction(AggregatedTestResultAction.class);
 		
+		if (currentTestResults == null) {
+			return;
+		}
+		
 		//retrieve the test results 
 		List<AggregatedTestResultAction.ChildReport> currentResults = currentTestResults.getResult();
 
