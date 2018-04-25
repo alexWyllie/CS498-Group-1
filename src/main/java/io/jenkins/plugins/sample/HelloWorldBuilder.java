@@ -122,15 +122,21 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 		StringBuilder toOutput = new StringBuilder();
 		toOutput.append("-------------------------------------------------------\r\n N E W L Y    P A S S I N G   T E S T S\r\n-------------------------------------------------------\n");
 		for (int i = 0; i < newlyPassed.size(); i++) {
-			toOutput.append(newlyPassed.get(i).getName() + "\r\n");
+			toOutput.append(newlyPassed.get(i).getName() + "\n");
 		}
 		toOutput.append("-------------------------------------------------------\r\n N E W L Y    F A I L I N G   T E S T S\r\n-------------------------------------------------------\n");
 		for (int i = 0; i < newlyFailed.size(); i++) {
-			toOutput.append(newlyFailed.get(i).getName() + "\r\n");
+			toOutput.append(newlyFailed.get(i).getName() + "\n");
 		}
 		toOutput.append("-------------------------------------------------------\r\n S T I L L    F A I L I N G   T E S T S\r\n-------------------------------------------------------\n");
 		for (int i = 0; i < stillFailed.size(); i++) {
-			toOutput.append(stillFailed.get(i).getName() + "\r\n");
+			CaseResult prev = stillFailed.get(i).getPreviousResult();
+			int fails = 1;
+			while (prev != null && prev.isFailed()) {
+				fails++;
+				prev = prev.getPreviousResult();
+			}
+			toOutput.append(stillFailed.get(i).getName() + "\t Failed for the last " + fails + " builds\n");
 		}
 		
 		output = toOutput.toString();
