@@ -88,6 +88,10 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 				//obtain the status of the test in previous build
 				CaseResult previousTestResChild = (CaseResult) currRes.get(j).getPreviousResult();
 				
+				if (previousTestResChild == null) {
+					continue;
+				}
+				
 				if (currentTestResChild.isPassed() && previousTestResChild.isFailed()) {
 					newlyPassed.add(currentTestResChild);
 				}
@@ -101,6 +105,10 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 				//obtain the status of the test in the previous build
 				CaseResult previousTestResChild = (CaseResult) failedTests.get(j).getPreviousResult();
 				
+				if (previousTestResChild == null) {
+					continue;
+				}
+				
 				if (currentTestResChild.isFailed() && previousTestResChild.isPassed()) {
 					newlyFailed.add(currentTestResChild);
 				}
@@ -112,17 +120,17 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 		}
 		
 		StringBuilder toOutput = new StringBuilder();
-		toOutput.append("-------------------------------------------------------\n N E W L Y    P A S S I N G   T E S T S\n-------------------------------------------------------\n");
+		toOutput.append("-------------------------------------------------------\r\n N E W L Y    P A S S I N G   T E S T S\r\n-------------------------------------------------------\n");
 		for (int i = 0; i < newlyPassed.size(); i++) {
-			toOutput.append(newlyPassed.get(i).getName() + "\n");
+			toOutput.append(newlyPassed.get(i).getName() + "\r\n");
 		}
-		toOutput.append("-------------------------------------------------------\n N E W L Y    F A I L I N G   T E S T S\n-------------------------------------------------------\n");
+		toOutput.append("-------------------------------------------------------\r\n N E W L Y    F A I L I N G   T E S T S\r\n-------------------------------------------------------\n");
 		for (int i = 0; i < newlyFailed.size(); i++) {
-			toOutput.append(newlyFailed.get(i).getName() + "\n");
+			toOutput.append(newlyFailed.get(i).getName() + "\r\n");
 		}
-		toOutput.append("-------------------------------------------------------\n S T I L L    F A I L I N G   T E S T S\n-------------------------------------------------------\n");
+		toOutput.append("-------------------------------------------------------\r\n S T I L L    F A I L I N G   T E S T S\r\n-------------------------------------------------------\n");
 		for (int i = 0; i < stillFailed.size(); i++) {
-			toOutput.append(stillFailed.get(i).getName() + "\n");
+			toOutput.append(stillFailed.get(i).getName() + "\r\n");
 		}
 		
 		output = toOutput.toString();
