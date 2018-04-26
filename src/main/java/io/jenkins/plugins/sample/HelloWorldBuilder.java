@@ -30,6 +30,9 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 	private final String testSuiteFile;
 	private boolean compileResults;
 	private String output;
+	private String outputNewPass;
+	private String outputNewFail;
+	private String outputStillFail;
 
 	@DataBoundConstructor
 	public HelloWorldBuilder() {
