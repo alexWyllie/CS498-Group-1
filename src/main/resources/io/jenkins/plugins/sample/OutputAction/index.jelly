@@ -5,9 +5,21 @@
             <st:include page="sidepanel.jelly" it="${it.run}" optional="true" /> 
         </l:side-panel>
         <l:main-panel> 
-            <h1> 
-                Results: ${it.output} 
-            </h1>
+            <div>
+                <h3> 
+                    ${it.outputNewPass} 
+                </h3>
+            </div>
+            <div>
+                <h3>
+                   ${it.outputNewFail}
+                </h3>
+            </div>
+            <div>
+                <h3>
+                    ${it.outputStillFail}
+                </h3>
+            </div>
         </l:main-panel>
     </l:layout>
 </j:jelly>
