@@ -6,15 +6,27 @@ import jenkins.model.RunAction2;
 
 public class OutputAction implements RunAction2 {
 	
-	private String output;
+	private String outputNewPass;
+	private String outputNewFail;
+	private String outputStillFail;
 	private transient Run run;
 	
-	public OutputAction(String output) {
-		this.output = output;
+	public OutputAction(String outputNewPass, String outputNewFail, String outputStillFail) {
+		this.outputNewPass = outputNewPass;
+		this.outputNewFail = outputNewFail;
+		this.outputStillFail = outputStillFail;
 	}
 
-	public String getOutput() {
-		return output;
+	public String getOutputNewPass() {
+		return outputNewPass;
+	}
+	
+	public String getOutputNewFail() {
+		return outputNewFail;
+	}
+	
+	public String getOutputStillFail() {
+		return outputStillFail;
 	}
 	
 	@Override
