@@ -1,5 +1,5 @@
-//Author Charles Maroudas
-
+*///Author Charles Maroudas
+//This file was not used for the program.
 package io.jenkins.plugins.sample;
 import java.util.Arrays;
 import java.io.*;
@@ -32,7 +32,7 @@ import java.util.ArrayList;
 /**
  * Program That Prints An Array In Java using Arrays.toString().
  */
-public class PrintArrayInJava {
+/*public class PrintArrayInJava {
    private static void printArray(int[][] anArray) {
       System.out.println(Arrays.toString(anArray));
    }
