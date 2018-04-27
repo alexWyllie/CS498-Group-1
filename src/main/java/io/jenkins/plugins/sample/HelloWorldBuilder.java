@@ -126,15 +126,19 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 		StringBuilder toOutputNewPass = new StringBuilder();
 		StringBuilder toOutputNewFail = new StringBuilder();
 		StringBuilder toOutputStillFail = new StringBuilder();
-		toOutputNewPass.append("-------------------------------------------------------\r\n N E W L Y    P A S S I N G   T E S T S\r\n-------------------------------------------------------\n");
+		//toOutputNewPass.append("-------------------------------------------------------\r\n N E W L Y    P A S S I N G   T E S T S\r\n-------------------------------------------------------\n");
 		for (int i = 0; i < newlyPassed.size(); i++) {
-			toOutputNewPass.append(newlyPassed.get(i).getName() + "\n");
+			toOutputNewPass.append(" | ");
+			toOutputNewPass.append(newlyPassed.get(i).getName() );
+			toOutputNewPass.append(" | \n");
 		}
-		toOutputNewFail.append("-------------------------------------------------------\r\n N E W L Y    F A I L I N G   T E S T S\r\n-------------------------------------------------------\n");
+		//toOutputNewFail.append("-------------------------------------------------------\r\n N E W L Y    F A I L I N G   T E S T S\r\n-------------------------------------------------------\n");
 		for (int i = 0; i < newlyFailed.size(); i++) {
+			toOutputNewFail.append(" | ");
 			toOutputNewFail.append(newlyFailed.get(i).getName() + "\n");
+			toOutputNewFail.append(" | \n");
 		}
-		toOutputStillFail.append("-------------------------------------------------------\r\n S T I L L    F A I L I N G   T E S T S\r\n-------------------------------------------------------\n");
+		//toOutputStillFail.append("-------------------------------------------------------\r\n S T I L L    F A I L I N G   T E S T S\r\n-------------------------------------------------------\n");
 		for (int i = 0; i < stillFailed.size(); i++) {
 			CaseResult prev = stillFailed.get(i).getPreviousResult();
 			int fails = 1;
@@ -142,15 +146,24 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 				fails++;
 				prev = prev.getPreviousResult();
 			}
-			toOutputStillFail.append(stillFailed.get(i).getName() + "\t Failed for the last " + fails + " builds\n");
+			toOutputStillFail.append(" | ");
+			toOutputStillFail.append(stillFailed.get(i).getName() + "\t Failed for the last " + fails + " builds");
+			toOutputStillFail.append(" | \n");
 		}
 		
 		outputNewPass = toOutputNewPass.toString();
 		outputNewFail = toOutputNewFail.toString();
 		outputStillFail= toOutputStillFail.toString();
 		
+		
+		
+		listener.getLogger().println("-------------------------------------------------------\r\n N E W L Y    P A S S I N G   T E S T S\r\n-------------------------------------------------------\n");
 		listener.getLogger().println(outputNewPass);
+		
+		listener.getLogger().println("-------------------------------------------------------\r\n N E W L Y    F A I L I N G   T E S T S\r\n-------------------------------------------------------\n");
 		listener.getLogger().println(outputNewFail);
+		
+		listener.getLogger().println("-------------------------------------------------------\r\n S T I L L    F A I L I N G   T E S T S\r\n-------------------------------------------------------\n");
 		listener.getLogger().println(outputStillFail);
 		
 		
