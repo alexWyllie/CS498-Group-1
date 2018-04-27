@@ -1,0 +1,7 @@
+The goal of our project is to highlight those tests which failed in previous builds and now pass, as well as those tests which passed in previous builds and now fail.
+
+Installation: Once you've downloaded the plugin, navigate to the directory containing its pom.xml file. run mvn clean compile, then mvn hip:run to actually start a jenkins instance with the plugin installed. Installation through the jenkins plugin manager is untested.
+
+Once jenkins is running, it is strongly recommended to resolve all plugins issues in the jenkins plugins manager, as well as to install all of your other desired plugins and setup your jenkins normally. When you want to use our plugin in a job, navigate to that job's configuration and set up your job normally. Then, in the build step menu, select "compare test results to previous builds" from the options provided. If you have other build steps already, make sure that the plugin is set to be a build step that executes after any build steps where tests are run. When you activate the plugin, there will be a checkbox option in the build step options. Check the box in order to enable the plugin. You can also disable the plugin without having to remove its build step by leaving the box unchecked.
+
+If you use the plugin on the first build of a job, it won't give you any useful information. It is recommended to immediately build the job twice in order to to actually get meaningful output from out plugin.
