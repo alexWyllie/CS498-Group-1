@@ -9,7 +9,7 @@
             <h2>|-----NEWLY PASSING TESTS-----|</h2>
                 <table bgcolor="lime" border="0"><tr>
                     <td>${it.outputNewPass}</td> 
-                </tr></table>.
+                </tr></table>
             <h2>|-----NEWLY FAILING TESTS-----|</h2>
                 <table bgcolor="red" border="0"><tr>
                     <td>${it.outputNewFail}</td> 
